@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   
   devise_for :users , controllers: {registrations: "registrations"}
   get '/:name/dashboard' => 'main#dashboard' ,  :as => :dashboard
-  patch'/:name/dashboard/' => 'main#update' , :as => :user_update
+  # patch'/:name/dashboard/' => 'main#update' , :as => :user_update
   post'/:name/dashboard/' => 'main#basicCreate' , :as => :user_basic
+  patch'/:name/dashboard/' => 'main#basicCreate' 
 
 
   root 'main#index'

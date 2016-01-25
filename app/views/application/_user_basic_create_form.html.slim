@@ -1,4 +1,4 @@
-= simple_form_for @basic ,url: user_basic_path do |f| 
+= simple_form_for @basic ,url: {action: 'basicCreate'} do |f| 
 	= f.input :full_name 
 	= f.input :email
 	= f.input :phone

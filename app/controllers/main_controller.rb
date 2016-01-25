@@ -10,21 +10,48 @@ class MainController < ApplicationController
 
 
   def dashboard
-  	@basic = Basic.new
-  	@user = current_user
+  	     @user = current_user
+  	if @user.basic.nil?
+  		@basic = Basic.new
+  	else 
+  		@basic = @user.basic
+  	end
+
+  	
     
   end
 
 
   def basicCreate
-    basic = Basic.new(basic_params) 
-    basic.user_id = current_user.id
-    if basic.save
+
+     @user = current_user
+  if @user.basic.nil?
+  		basic = Basic.new(basic_params) 
+        basic.user_id = current_user.id
+       if basic.save
     	redirect_to dashboard_path
-    else
-    	render basicCreate
-    end
+       else
+      	render basicCreate
+       end
+  		
+  	else
+  	  if @user.basic.update(basic_params)
+  	  	 
+  	     redirect_to dashboard_path
+       else
+      	render basicCreate
+       end
+  		
+  	end
+
+   
   end
+
+  def basicUpdate
+
+
+  end
+
 
 
 private
