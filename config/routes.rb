@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  
+  devise_for :users , controllers: {registrations: "registrations"}
+  get '/:name/dashboard' => 'main#dashboard' ,  :as => :dashboard
+  patch'/:name/dashboard/' => 'main#update' , :as => :user_edit_patch
+
+
+  root 'main#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
