@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   patch'/:name/dashboard/' => 'main#basicCreate' 
 
+  
+
 
   root 'main#index'
 

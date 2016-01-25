@@ -4,14 +4,15 @@
 	p
 		= link_to 'log out', destroy_user_session_path , method: :delete 
 
-
-=render 'user_basic_create_form'
-
-h2
-	=@basic.full_name
+	
+	= link_to "Basic" , dashboard_path(current_user.name , data: "basic") , remote: true , class: 'btn btn-default' 
+		
 
 
+div class='outer'
+	= render 'education_update_form' 
 
 
-=render 'education_update_form'
-      
+
+
+
