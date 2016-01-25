@@ -10,47 +10,55 @@ class MainController < ApplicationController
 
 
   def dashboard
-  	     @user = current_user
+  	@user = current_user
+
   	if @user.basic.nil?
   		@basic = Basic.new
   	else 
   		@basic = @user.basic
   	end
-
-  	
-    
   end
 
-
-  def basicCreate
+    def basicCreate
 
      @user = current_user
-  if @user.basic.nil?
+	 if @user.basic.nil?
   		basic = Basic.new(basic_params) 
         basic.user_id = current_user.id
-       if basic.save
-    	redirect_to dashboard_path
-       else
-      	render basicCreate
-       end
+       	if basic.save
+    		redirect_to dashboard_path
+        else
+      		render basicCreate
+       	end
   		
-  	else
-  	  if @user.basic.update(basic_params)
-  	  	 
-  	     redirect_to dashboard_path
-       else
-      	render basicCreate
-       end
+  	 else
+  	    if @user.basic.update(basic_params)
+
+  	     	redirect_to dashboard_path
+        else
+      		render basicCreate
+        end
   		
   	end
 
    
+ end
+
+  def update
+  	@user = current_user
+  	if @user.update(user_params)
+  		redirect_to dashboard_path
+     else
+      	render update
+     end
+
+
   end
 
-  def basicUpdate
 
 
-  end
+
+
 
 
 
@@ -63,9 +71,14 @@ def right_user(username)
     end
   end
 
-  def basic_params
+def basic_params
     params.require(:basic).permit( :full_name , :email ,:phone ,:linkedin , :essential )
+ end
+
+  def user_params
+  	params.require(:user).permit( educations_attributes: [:id, :degree ,:year , :college ,:_destroy] )
   end
+
   
 
 end
