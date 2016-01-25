@@ -1,1 +1,10 @@
-hi
+.well
+	hi  =@user.name
+
+	p
+		= link_to 'log out', destroy_user_session_path , method: :delete 
+
+
+=render 'user_basic_edit_form'
+
+      
