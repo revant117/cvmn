@@ -5,9 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
    has_one :basic , dependent: :destroy
 
+
    has_many :educations ,  dependent: :destroy
    		 accepts_nested_attributes_for :educations, reject_if: proc { |attributes| attributes['degree'].blank? } , allow_destroy: true
 
-  
+   	has_many :projects ,  dependent: :destroy
+   		 accepts_nested_attributes_for :projects, reject_if: proc { |attributes| attributes['proj_name'].blank? } , allow_destroy: true
+
+  	
 	  
 end

@@ -10,6 +10,7 @@ class MainController < ApplicationController
 
 
   def dashboard
+  	@var = params[:data]
   	@user = current_user
 
   	if @user.basic.nil?
@@ -76,7 +77,7 @@ def basic_params
  end
 
   def user_params
-  	params.require(:user).permit( educations_attributes: [:id, :degree ,:year , :college ,:_destroy] )
+  	params.require(:user).permit( educations_attributes: [:id, :degree ,:year , :college ,:_destroy] , projects_attributes:[:id , :proj_name , :proj_des,:proj_add ,:_destroy])
   end
 
   
