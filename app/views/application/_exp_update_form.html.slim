@@ -1,0 +1,16 @@
+
+= simple_form_for @user , url: {action: 'update'} do |f| 
+	h3 Experience
+		
+	= f.simple_fields_for :exps do |edu|
+		= render 'education_fields' , f: edu 
+	.links
+		= link_to_add_association 'add education', f, :exps
+
+	= f.button :submit 
+	
+
+
+
+
+  

@@ -20,10 +20,10 @@ class MainController < ApplicationController
   	end
   end
 
-    def basicCreate
+  def basicCreate
 
      @user = current_user
-	 if @user.basic.nil?
+	   if @user.basic.nil?
   		basic = Basic.new(basic_params) 
         basic.user_id = current_user.id
        	if basic.save
@@ -32,7 +32,7 @@ class MainController < ApplicationController
       		render basicCreate
        	end
   		
-  	 else
+  	   else
   	    if @user.basic.update(basic_params)
 
   	     	redirect_to dashboard_path
@@ -40,7 +40,7 @@ class MainController < ApplicationController
       		render basicCreate
         end
   		
-  	end
+  end
 
    
  end
@@ -77,7 +77,7 @@ def basic_params
  end
 
   def user_params
-  	params.require(:user).permit( educations_attributes: [:id, :degree ,:year , :college ,:_destroy] , projects_attributes:[:id , :proj_name , :proj_des,:proj_add ,:_destroy])
+  	params.require(:user).permit( educations_attributes: [:id, :degree ,:year , :college ,:_destroy] , projects_attributes:[:id , :proj_name , :proj_des,:proj_add ,:_destroy] , exps_attributes:[:id , :comp_name , :comp_location , :role , :duration ,:role_des,:_destroy])
   end
 
   

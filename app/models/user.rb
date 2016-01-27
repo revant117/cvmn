@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
    	has_many :projects ,  dependent: :destroy
    		 accepts_nested_attributes_for :projects, reject_if: proc { |attributes| attributes['proj_name'].blank? } , allow_destroy: true
 
+
+    has_many :exps ,  dependent: :destroy
+       accepts_nested_attributes_for :exps, reject_if: proc { |attributes| attributes['comp_name'].blank? } , allow_destroy: true
+
   	
 	  
 end
