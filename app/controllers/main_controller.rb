@@ -12,13 +12,13 @@ class MainController < ApplicationController
   def dashboard
   	@var = params[:data]
   	@user = current_user
+   
     if @user.basic == nil
       @basic = Basic.new
-      @status = true
     else 
       @basic = @user.basic
-      @status = false
     end
+
 
      if  user_params
      respond_to do |format|
@@ -44,18 +44,21 @@ class MainController < ApplicationController
             @basic = current_user.basic
             format.js {}
           else
-            render basicCreate
+            @basic = basic
+            format.js {}
           end
        end
 
       else 
        respond_to do |format|
-      if current_user.basic.update(basic_params)
+        if current_user.basic.update(basic_params)
           @basic = current_user.basic
 
            format.js {render 'basic'}
         else
-          render basic
+          @basic = current_user.basic
+
+           format.js {render 'basic'}
        end
       end
     end

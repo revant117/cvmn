@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
    		 accepts_nested_attributes_for :educations, reject_if: proc { |attributes| attributes['degree'].blank? } , allow_destroy: true
 
    	has_many :projects ,  dependent: :destroy
-   		 accepts_nested_attributes_for :projects, reject_if: proc { |attributes| attributes['proj_name'].blank? } , allow_destroy: true
-
+   		 accepts_nested_attributes_for :projects, allow_destroy: true
+# , reject_if: proc { |attributes| attributes['proj_name'].blank? } ,
 
     has_many :exps ,  dependent: :destroy
        accepts_nested_attributes_for :exps, reject_if: proc { |attributes| attributes['comp_name'].blank? } , allow_destroy: true

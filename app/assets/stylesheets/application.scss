@@ -1,3 +1,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap/theme';
+
+.jumbo {
+	width: 50%;
+	margin:auto;
+}
+
+.jumbo-in{
+	margin : 15px;
+}
+
+.outer{
+	width: 50%;
+	margin:auto;
+}
+
+.db-panel{
+	width: 80%;
+	margin: auto;
+	margin-bottom : 10px;
+}
+.panel-in{
+	
+    padding-left: 100px;
+
+}
