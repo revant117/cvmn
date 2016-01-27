@@ -1,5 +1,5 @@
 
-= simple_form_for @user , url: {action: 'update'} do |f| 
+= simple_form_for @user , url: {action: 'dashboard' ,:data => 'education'} , remote: true  do |f| 
 	h3 Educations
 		
 	= f.simple_fields_for :educations do |edu|

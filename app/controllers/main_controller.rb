@@ -12,49 +12,63 @@ class MainController < ApplicationController
   def dashboard
   	@var = params[:data]
   	@user = current_user
+    if @user.basic == nil
+      @basic = Basic.new
+      @status = true
+    else 
+      @basic = @user.basic
+      @status = false
+    end
 
-  	if @user.basic.nil?
-  		@basic = Basic.new
-  	else 
-  		@basic = @user.basic
-  	end
-  end
-
-  def basicCreate
-
-     @user = current_user
-	   if @user.basic.nil?
-  		basic = Basic.new(basic_params) 
-        basic.user_id = current_user.id
-       	if basic.save
-    		redirect_to dashboard_path
-        else
-      		render basicCreate
-       	end
-  		
-  	   else
-  	    if @user.basic.update(basic_params)
-
-  	     	redirect_to dashboard_path
-        else
-      		render basicCreate
-        end
-  		
-  end
-
+     if  user_params
+     respond_to do |format|
    
- end
+      if @user.update(user_params)
+        format.js {}
+      else
+        format.js {}
+      end
+    end
+  end
+  	
+  end
 
-  def update
-  	@user = current_user
-  	if @user.update(user_params)
-  		redirect_to dashboard_path
-     else
-      	render update
-     end
+  def basic
+     @user= current_user
+     if @user.basic == nil
+      
+      basic = Basic.new(basic_params) 
+        basic.user_id = current_user.id
+        respond_to do |format|
+          if basic.save
+            @basic = current_user.basic
+            format.js {}
+          else
+            render basicCreate
+          end
+       end
 
+      else 
+       respond_to do |format|
+      if current_user.basic.update(basic_params)
+          @basic = current_user.basic
+
+           format.js {render 'basic'}
+        else
+          render basic
+       end
+      end
+    end
+
+
+
+end
+ 
+   
 
   end
+
+
 
 
 
@@ -77,9 +91,11 @@ def basic_params
  end
 
   def user_params
-  	params.require(:user).permit( educations_attributes: [:id, :degree ,:year , :college ,:_destroy] , projects_attributes:[:id , :proj_name , :proj_des,:proj_add ,:_destroy] , exps_attributes:[:id , :comp_name , :comp_location , :role , :duration ,:role_des,:_destroy])
+    if params[:user]
+  	
+        params.require(:user).permit( educations_attributes: [:id, :degree ,:year , :college ,:_destroy] , projects_attributes:[:id , :proj_name , :proj_des,:proj_add ,:_destroy] , exps_attributes:[:id , :comp_name , :comp_location , :role , :duration ,:role_des,:_destroy] , skills_attributes: [:id , :skill_name , :_destroy])
+    else 
+      return false
+    end
   end
 
-  
-
-end

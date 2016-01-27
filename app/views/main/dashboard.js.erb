@@ -1,25 +1,25 @@
 
-$(document).ready(function() {
+// $(document).ready(function() {
 	var variable = "<%=@var%>";
+	alert(variable);
 	// alert(variable);
 
 	if(variable == 'basic'){
 		$('.outer').empty();
-	 $('.outer').append('<%= j render 'user_basic_create_form'%>');
+	 	$('.outer').append('<%= j render 'user_basic_create_form'%>');
 	} else if(variable == 'project'){
 		$('.outer').empty();
-	 $('.outer').append('<%= j render 'project_update_form'%>');
+	 	$('.outer').append('<%= j render 'project_update_form'%>');
 	}else if(variable == 'education'){
 		$('.outer').empty();
-	 $('.outer').append('<%= j render 'education_update_form'%>');
+		 $('.outer').append('<%= j render 'education_update_form'%>');
 	} else if(variable == 'exp'){
 		$('.outer').empty();
-	 $('.outer').append('<%= j render 'exp_update_form'%>');
-	} 
-
+	 	$('.outer').append('<%= j render 'exp_update_form'%>');
+	}  else if(variable == 'skill'){
+		$('.outer').empty();
+	 	$('.outer').append('<%= j render 'skill_update_form'%>');
+	} 	
 
 	
-	
-
-	
-});
+// });

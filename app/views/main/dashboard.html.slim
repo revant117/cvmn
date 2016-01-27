@@ -9,11 +9,19 @@
 	= link_to "Projects" , dashboard_path(current_user.name , data: "project") , remote: true , class: 'btn btn-default' 
 	= link_to "Educations" , dashboard_path(current_user.name , data: "education") , remote: true , class: 'btn btn-default' 
 	= link_to "Experience" , dashboard_path(current_user.name , data: "exp") , remote: true , class: 'btn btn-default' 
+	= link_to "Skills" , dashboard_path(current_user.name , data: "skill") , remote: true , class: 'btn btn-default' 
 		
 
 
 div class='outer'
-	= render 'education_update_form' 
+		= render 'user_basic_create_form' 
+	
+	
+	
+		
+
+div class='alert-box'
+
 
 
 

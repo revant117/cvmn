@@ -1,0 +1,15 @@
+
+= simple_form_for @user , url: {action: 'dashboard' , :data => 'skill'}, remote: true do |f| 
+	h3 Skills
+		
+	= f.simple_fields_for :skills do |edu|
+		= render 'skill_fields' , f: edu 
+	.links
+		= link_to_add_association 'add skills', f, :skills
+
+	= f.button :submit 
+	
+
+
+
+  

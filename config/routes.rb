@@ -4,17 +4,16 @@ Rails.application.routes.draw do
   devise_for :users , controllers: {registrations: "registrations"}
 
   get '/:name/dashboard' => 'main#dashboard' ,  :as => :dashboard
+  patch '/:name/dashboard' => 'main#dashboard' ,  :as => :dashboard_patch
 
-  patch'/:name/dashboard/userupdate' => 'main#update' , :as => :user_update 
+  # patch'/:name/dashboard/userupdate' => 'main#update' , :as => :user_update 
 
   
 
 
-  post'/:name/dashboard/' => 'main#basicCreate' , :as => :user_basic
 
 
-  patch'/:name/dashboard/' => 'main#basicCreate' 
-
+  match '/:name/dashboard/basic' => 'main#basic'  , :as => :basic , via: [:post , :patch]
   
 
 
