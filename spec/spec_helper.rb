@@ -16,6 +16,23 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+module Features
+  module SessionHelpers
+   def user_sign_in_with(email , password)
+    visit "/users/sign_in"
+    fill_in "user_email", :with => email
+      fill_in "user_password" ,:with => password
+      find('input[name="commit"]').click
+
+      end
+
+  
+  end
+end
+
+
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

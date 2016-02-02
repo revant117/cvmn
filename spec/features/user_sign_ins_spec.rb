@@ -1,12 +1,12 @@
 require 'rails_helper'
+require 'support/features'
 
-
-
+#using databse cleaner
 DatabaseCleaner.strategy = :truncation
 
 DatabaseCleaner.clean
 
-RSpec.feature "UserSignIns", type: :feature  do
+RSpec.feature "UserSignIns", type: :feature, js: true  do
 
 
    scenario "User Sign up first time" do
@@ -56,16 +56,10 @@ RSpec.feature "UserSignIns", type: :feature  do
     scenario "user signs in with right credentials" do
     	user_sign_in_with "a@a.com" , "12121212"
 
-    	expect(page).to have_text("Log in")
+    	expect(page).to have_text("dashboard")
     end
 
-	def user_sign_in_with(email , password)
-		visit "/users/sign_in"
-		fill_in "user_email", :with => email
-	    fill_in "user_password" ,:with => password
-	    find('input[name="commit"]').click
-
-	end
+	
 
 end
 
