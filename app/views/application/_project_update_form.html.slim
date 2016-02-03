@@ -1,13 +1,13 @@
+#project_form
+	= simple_form_for @user , url: {action: 'dashboard' , :data => 'project' } , remote: true   do |f| 
+		h3 Projects
+			
+		= f.simple_fields_for :projects do |edu|
+			= render 'project_fields' , f: edu 
+		.links
+			= link_to_add_association 'add projects', f, :projects
 
-= simple_form_for @user , url: {action: 'dashboard' , :data => 'project' } , remote: true   do |f| 
-	h3 Projects
-		
-	= f.simple_fields_for :projects do |edu|
-		= render 'project_fields' , f: edu 
-	.links
-		= link_to_add_association 'add projects', f, :projects
-
-	= f.button :submit 
+		= f.button :submit 
 	
 
 

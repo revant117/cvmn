@@ -8,9 +8,9 @@ p dashboard
 .panel.panel-default.db-panel
 	.panel-body.row.panel-in
 		.col-md-2
-			= link_to "Basic" , dashboard_path(current_user.name , data: "basic") , remote: true , class: 'btn btn-default' 
+			= link_to "Basic" , dashboard_path(current_user.name , data: "basic") , remote: true , class: 'btn btn-default' , id: 'basic' 
 		.col-md-2
-			= link_to "Projects" , dashboard_path(current_user.name , data: "project") , remote: true , class: 'btn btn-default' 
+			= link_to "Projects" , dashboard_path(current_user.name , data: "project") , remote: true , class: 'btn btn-default' , id: 'project'
 		.col-md-2
 			= link_to "Educations" , dashboard_path(current_user.name , data: "education") , remote: true , class: 'btn btn-default' 
 		.col-md-2

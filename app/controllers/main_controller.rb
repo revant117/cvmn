@@ -37,11 +37,11 @@ class MainController < ApplicationController
      @user= current_user
      if @user.basic == nil
       
-      basic = Basic.new(basic_params) 
+        basic = Basic.new(basic_params) 
         basic.user_id = current_user.id
         respond_to do |format|
           if basic.save
-            @basic = current_user.basic
+            @basic = basic
             format.js {}
           else
             @basic = basic
