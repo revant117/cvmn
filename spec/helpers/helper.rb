@@ -21,9 +21,9 @@
         find("input[id$=_proj_name]", match: :first)
         all("input[id$=_proj_name").last.set(projects[x].proj_name)
         
-        # all("input[id$=_proj_des]").last.set(projects[x].proj_des)
+        all("[id$=_proj_des]").last.set(projects[x].proj_des)
         
-        # all("input[id$=_proj_add]").last.set(projects[x].proj_add)
+        all("[id$=_proj_add]").last.set(projects[x].proj_add)
      
       end
       find('input[name="commit"]').click
