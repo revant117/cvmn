@@ -18,7 +18,7 @@
         click_link "add projects"
       
 
-        find("input[id$=_proj_name]", match: :first)
+        find("input[id$=_proj_name]", match: :first) 
         all("input[id$=_proj_name").last.set(projects[x].proj_name)
         
         all("[id$=_proj_des]").last.set(projects[x].proj_des)

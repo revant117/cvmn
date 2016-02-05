@@ -2,6 +2,15 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 
+
+html{
+	height:100%;
+}
+
+body{
+	height:100%;
+}
+
 .jumbo {
 	width: 50%;
 	margin:auto;
@@ -25,4 +34,37 @@
 	
     padding-left: 100px;
 
+}
+
+.header{
+
+	height:100vh ;
+	background-image: url(http://www.gettyimages.ca/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg);
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color : white;
+	text-shadow:0px 4px 5px black;
+}
+
+$olive: #3D9970;
+
+a{
+	 
+	  margin: 25px 0;
+	  text-decoration: none !important;
+	  font-size: 18px;
+	  color: white !important;
+	  padding: 1em 2em;
+	  letter-spacing: .1em;
+	  border-radius: 3px; 
+	  background: $olive;
+	  border-radius: 0;
+  	  box-shadow: 5px 5px 0px lighten($olive, 30%);
+}
+
+.button:hover{
+	background: darken($olive, 5%);
 }
